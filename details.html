@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satvik:Food_Details</title>
+    <link href="details.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <img src="ogo.jpeg" height="70" width="230">
+        <div class="box">
+            <div class="home">Food Details</div>
+        </div>
+    
+        <button class="login" onClick="document.location='http://localhost:8080/signup/popup.jsp'">Profile <i class="fa-solid fa-user"></i></button>
+         
+                
+    
+        <div class="des"> 
+            <h3>Enter Food Information</h3><br><br>
+            <form action="b.html" name="food_details">
+                <label  for="region" id="region" >Region</label><br><br>
+                <select name="region">
+                    <option value="n">North</option>
+                    <option value="s">South</option>
+                    <option value="e">East</option>
+                    <option value="w">West</option>
+
+                </select>
+                <br><br>
+                <label for="state">State</label><br><br>
+                <select name="state" id="sname">
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands (AN)</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh (AP)</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh (AR)</option>
+                    <option value="Assam">Assam (AS)</option>
+                    <option value="Bihar">Bihar (BR)</option>
+                    <option value="Chandigarh">Chandigarh (CH)</option>
+                    <option value="Chhattisgarh">Chhattisgarh (CT)</option>
+                    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu (DN)</option>
+                    <option value="Delhi">Delhi (DL)</option>
+                    <option value="Goa">Goa (GA)</option>
+                    <option value="Gujarat">Gujarat (GJ)</option>
+                    <option value="Haryana">Haryana (HR)</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh (HP)</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir (JK)</option>
+                    <option value="Jharkhand">Jharkhand (JH)</option>
+                    <option value="Karnataka">Karnataka (KA)</option>
+                    <option value="Kerala">Kerala (KL)</option>
+                    <option value="Ladakh">Ladakh (LA)</option>
+                    <option value="Lakshadweep">Lakshadweep (LD)</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh (MP)</option>
+                    <option value="Maharashtra">Maharashtra (MH)</option>
+                    <option value="Manipur">Manipur (MN)</option>
+                    <option value="Meghalaya">Meghalaya (ML)</option>
+                    <option value="Mizoram">Mizoram (MZ)</option>
+                    <option value="Nagaland">Nagaland (NL)</option>
+                    <option value="Odisha">Odisha (OR)</option>
+                    <option value="Puducherry">Puducherry (PY)</option>
+                    <option value="Punjab">Punjab (PB)</option>
+                    <option value="Rajasthan">Rajasthan (RJ)</option>
+                    <option value="Sikkim">Sikkim (SK)</option>
+                    <option value="Tamil Nadu">Tamil Nadu (TN)</option>
+                    <option value="Telangana">Telangana (TG)</option>
+                    <option value="Tripura">Tripura (TR)</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh (UP)</option>
+                    <option value="Uttarakhand">Uttarakhand (UT)</option>
+                    <option value="West Bengal">West Bengal (WB)</option>
+                </select><br><br>
+        
+
+                <label for="season">Season</label><br><br>
+                <select name="season" id="seaname">
+                    <option value="sum">Summer</option>
+                    <option value="Mon">Monsoon</option>
+                    <option value="Win">Winter</option>
+                    
+                </select><br><br>
+
+                <label for="food_type">Food Type</label><br><br>
+                <select name="food_type" id="ftype">
+                    <option value="Fruit">Fruits</option>
+                    <option value="Vegetable">Vegetables</option>
+                    <option value="pulses">Pulses and Grain</option>
+                </select><br><br><br>
+
+                <input type="submit" class="apply" placeholder="apply" onclick="document.location='http://localhost:8080/blank.jsp'">
+
+
+                 
+            </form>
+        </div>
+        <!--<form action="satvik.html" name="region">
+            <div>
+                <p>Choose Your Zone  <button><i class="fa-solid fa-plus"></i></button></p>
+            </div>
+        </form>-->
+        <div class="zone" name="region">
+            <div class="n">
+                <p>North</p>
+                
+            </div> 
+            <div class="s">
+                <p>South</p>
+                
+            </div>
+            <div class="e">
+                <p>East</p>
+               
+            </div>
+            <div class="w">
+                <p>West</p>
+               
+            </div>
+        </div>
+    
+         
+         
+            
+        
+    </body>
+</html>

@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Food Details Results</title>
+        <link href="s6.css" rel="stylesheet">
+        <style>
+            body {
+                text-align: center; /* Center content */
+            }
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+            }
+            .back-button {
+                background-color: #006400;;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            .food-details {
+                margin-top: 20px;
+            }
+        </style>
+        
+        <script>
+            // Extract the query parameters
+            function getQueryParams() {
+                var params = {};
+                var queryString = window.location.search.slice(1); // Remove '?'
+                var pairs = queryString.split('&');
+
+                pairs.forEach(function(pair) {
+                    var split = pair.split('=');
+                    params[decodeURIComponent(split[0])] = decodeURIComponent(split[1] || '');
+                });
+
+                return params;
+            }
+            function displaySelectedInfo() {
+                var params = getQueryParams();
+                
+                // Map region codes to full names
+                var regionMap = {
+                    'n': 'North',
+                    's': 'South',
+                    'e': 'East',
+                    'w': 'West'
+                };
+
+                // Map season codes to full names
+                var seasonMap = {
+                    'Win': 'Winter',
+                    'Sum': 'Summer',
+                    'Mon': 'Monsoon'
+                };
+
+                // Map food types to full names
+                var foodTypeMap = {
+                    'Fruit': 'Fruits',
+                    'pulses': 'Grains and Pulses', // Mapping Pulses to Grains and Pulses
+                    'Vegetable': 'Vegetables'
+                };
+
+                var region = params['region'];
+                var season = params['season'];
+                var foodType = params['food_type'];
+
+                // Use the maps to convert codes to full names
+                var fullRegion = regionMap[region] || region;
+                var fullSeason = seasonMap[season] || season;
+                var fullFoodType = foodTypeMap[foodType] || foodType;
+
+                // Create the heading text with full names
+                var selectedInfo = "Region: " + fullRegion + " | Season: " + fullSeason + " | Food Type: " + fullFoodType;
+                document.getElementById('selected-info').textContent = selectedInfo;
+            }
+
+
+
+            // Generate the table dynamically based on region, season, and food type
+            function generateTable() {
+                var params = getQueryParams();
+                var region = params['region'];
+                var season = params['season'];
+                var foodType = params['food_type'];
+
+                var tableContent = '';
+
+                // Example data based on form values for Fruits
+                if (region === 'n' && season === 'Mon' && foodType === 'Fruit') {
+                    tableContent = `
+                        <tr>
+                            <td>Mango</td>
+                            <td>60 kcal</td>
+                            <td>Vitamin C, Vitamin A, Folate, Fiber</td>
+                            <td>Boosts immunity, improves digestion, promotes healthy skin</td>
+                        </tr>
+                        <tr>
+                            <td>Litchi</td>
+                            <td>66 kcal</td>
+                            <td>Vitamin C, Copper, Potassium, Antioxidants</td>
+                            <td>Boosts immunity, improves skin health, aids digestion</td>
+                        </tr>
+                        <tr>
+                            <td>Cherry</td>
+                            <td>63 kcal</td>
+                            <td>Vitamin C, Potassium, Antioxidants, Fiber</td>
+                            <td>Reduces inflammation, improves sleep quality, supports heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Guava</td>
+                            <td>68 kcal</td>
+                            <td>Vitamin C, Fiber, Folate, Vitamin A</td>
+                            <td>Boosts immunity, improves digestive health, supports skin health</td>
+                        </tr>
+                        <tr>
+                            <td>Papaya</td>
+                            <td>43 kcal</td>
+                            <td>Vitamin C, Vitamin A, Folate, Antioxidants</td>
+                            <td>Aids digestion, improves skin health, boosts immunity</td>
+                        </tr>
+                        <tr>
+                            <td>Jamun</td>
+                            <td>60 kcal</td>
+                            <td>Vitamin C, Iron, Antioxidants</td>
+                            <td>Regulates blood sugar, improves digestion, boosts immunity</td>
+                        </tr>
+                        <tr>
+                            <td>Pomegranate</td>
+                            <td>83 kcal</td>
+                            <td>Vitamin C, Potassium, Fiber, Antioxidants</td>
+                            <td>Supports heart health, reduces inflammation, improves memory</td>
+                        </tr>
+                        <tr>
+                            <td>Apple</td>
+                            <td>52 kcal</td>
+                            <td>Vitamin C, Fiber, Antioxidants</td>
+                            <td>Aids in weight management, promotes heart health, improves gut health</td>
+                        </tr>
+                    `;
+                }
+                // Example data based on form values for Vegetables
+                else if (region === 'n' && season === 'Mon' && foodType === 'Vegetable') {
+                    tableContent = `
+                        <tr>
+                            <td>Ladyfinger</td>
+                            <td>33 kcal</td>
+                            <td>Fiber, Vitamin C</td>
+                            <td>Supports digestion, aids weight management</td>
+                        </tr>
+                        <tr>
+                            <td>Bottlegourd</td>
+                            <td>20 kcal</td>
+                            <td>Water, Vitamin C</td>
+                            <td>Hydrating, promotes heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Spinach</td>
+                            <td>23 kcal</td>
+                            <td>Iron, Vitamins A, C</td>
+                            <td>Promotes eye health, supports skin health</td>
+                        </tr>
+                        <tr>
+                            <td>Cabbage</td>
+                            <td>25 kcal</td>
+                            <td>Vitamins K, C</td>
+                            <td>Aids digestion, supports heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Cauliflower</td>
+                            <td>25 kcal</td>
+                            <td>Fiber, Vitamins C, K</td>
+                            <td>Supports detoxification, may reduce cancer risk</td>
+                        </tr>
+                        <tr>
+                            <td>Cucumber</td>
+                            <td>16 kcal</td>
+                            <td>Water, Vitamins K, C</td>
+                            <td>Hydrating, supports skin health</td>
+                        </tr>
+                        <tr>
+                            <td>Brinjal</td>
+                            <td>25 kcal</td>
+                            <td>Fiber, Antioxidants</td>
+                            <td>Aids weight management, supports heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Radish</td>
+                            <td>16 kcal</td>
+                            <td>Vitamins C, B6</td>
+                            <td>Supports digestion, may help in detoxification</td>
+                        </tr>
+                        <tr>
+                            <td>Methi</td>
+                            <td>49 kcal</td>
+                            <td>Fiber, Iron</td>
+                            <td>May lower blood sugar, supports heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Kachu</td>
+                            <td>76 kcal</td>
+                            <td>Fiber, Vitamins B6, C</td>
+                            <td>Supports digestion, good for gut health</td>
+                        </tr>
+                        <tr>
+                            <td>Arbi</td>
+                            <td>92 kcal</td>
+                            <td>Fiber, Vitamins B6, C</td>
+                            <td>Aids digestion, may help in weight management</td>
+                        </tr>
+                        <tr>
+                            <td>Green Beans</td>
+                            <td>31 kcal</td>
+                            <td>Fiber, Vitamins A, C</td>
+                            <td>Supports digestion, good for heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Pumpkin</td>
+                            <td>26 kcal</td>
+                            <td>Vitamins A, C, E</td>
+                            <td>Supports eye health, may aid weight loss</td>
+                        </tr>
+                    `;
+                } else if (region === 'n' && season === 'Mon' && foodType === 'pulses') {
+                    tableContent = `
+                        <tr>
+                            <td>Rice</td>
+                            <td>130 kcal</td>
+                            <td>Carbohydrates</td>
+                            <td>Provides energy, supports digestive health</td>
+                        </tr>
+                        <tr>
+                            <td>Jowar</td>
+                            <td>329 kcal</td>
+                            <td>Fiber, Protein</td>
+                            <td>Gluten-free, supports heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Maize</td>
+                            <td>365 kcal</td>
+                            <td>Carbohydrates, Fiber</td>
+                            <td>Provides energy, supports digestion</td>
+                        </tr>
+                        <tr>
+                            <td>Bajra</td>
+                            <td>378 kcal</td>
+                            <td>Fiber, Magnesium</td>
+                            <td>Good for digestion, may help control blood sugar</td>
+                        </tr>
+                        <tr>
+                            <td>Moong Dal</td>
+                            <td>105 kcal</td>
+                            <td>Protein, Fiber</td>
+                            <td>Supports digestion, aids weight management</td>
+                        </tr>
+                        <tr>
+                            <td>Urad Dal</td>
+                            <td>341 kcal</td>
+                            <td>Protein, Fiber</td>
+                            <td>Supports digestion, may help in weight management</td>
+                        </tr>
+                        <tr>
+                            <td>Arhar Dal</td>
+                            <td>353 kcal</td>
+                            <td>Protein, Iron</td>
+                            <td>Supports muscle health, may boost immunity</td>
+                        </tr>
+                        <tr>
+                            <td>Masoor Dal</td>
+                            <td>116 kcal</td>
+                            <td>Protein, Fiber</td>
+                            <td>Good for heart health, aids in weight management</td>
+                        </tr>
+                        <tr>
+                            <td>Kabul Chana</td>
+                            <td>164 kcal</td>
+                            <td>Protein, Fiber</td>
+                            <td>Supports digestive health, may help control blood sugar</td>
+                        </tr>
+                    `;
+                }
+                // Example data based on form values for Vegetables in North region during Monsoon
+                else if (region === 'n' && season === 'Mon' && foodType === 'Vegetable') {
+                    tableContent = `
+                        <tr>
+                            <td>Ladyfinger</td>
+                            <td>33 kcal</td>
+                            <td>Fiber, Vitamin C</td>
+                            <td>Supports digestion, aids weight management</td>
+                        </tr>
+                        <tr>
+                            <td>Bottlegourd</td>
+                            <td>20 kcal</td>
+                            <td>Water, Vitamin C</td>
+                            <td>Hydrating, promotes heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Spinach</td>
+                            <td>23 kcal</td>
+                            <td>Iron, Vitamins A, C</td>
+                            <td>Promotes eye health, supports skin health</td>
+                        </tr>
+                        <tr>
+                            <td>Cabbage</td>
+                            <td>25 kcal</td>
+                            <td>Vitamins K, C</td>
+                            <td>Aids digestion, supports heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Cauliflower</td>
+                            <td>25 kcal</td>
+                            <td>Fiber, Vitamins C, K</td>
+                            <td>Supports detoxification, may reduce cancer risk</td>
+                        </tr>
+                        <tr>
+                            <td>Cucumber</td>
+                            <td>16 kcal</td>
+                            <td>Water, Vitamins K, C</td>
+                            <td>Hydrating, supports skin health</td>
+                        </tr>
+                        <tr>
+                            <td>Brinjal</td>
+                            <td>25 kcal</td>
+                            <td>Fiber, Antioxidants</td>
+                            <td>Aids weight management, supports heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Radish</td>
+                            <td>16 kcal</td>
+                            <td>Vitamins C, B6</td>
+                            <td>Supports digestion, may help in detoxification</td>
+                        </tr>
+                        <tr>
+                            <td>Methi</td>
+                            <td>49 kcal</td>
+                            <td>Fiber, Iron</td>
+                            <td>May lower blood sugar, supports heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Kachu</td>
+                            <td>76 kcal</td>
+                            <td>Fiber, Vitamins B6, C</td>
+                            <td>Supports digestion, good for gut health</td>
+                        </tr>
+                        <tr>
+                            <td>Arbi</td>
+                            <td>92 kcal</td>
+                            <td>Fiber, Vitamins B6, C</td>
+                            <td>Aids digestion, may help in weight management</td>
+                        </tr>
+                        <tr>
+                            <td>Green Beans</td>
+                            <td>31 kcal</td>
+                            <td>Fiber, Vitamins A, C</td>
+                            <td>Supports digestion, good for heart health</td>
+                        </tr>
+                        <tr>
+                            <td>Pumpkin</td>
+                            <td>26 kcal</td>
+                            <td>Vitamins A, C, E</td>
+                            <td>Supports eye health, may aid weight loss</td>
+                        </tr>
+                    `;
+                }
+                            else if (region === 'n' && season === 'Sum' && foodType === 'Fruit') {
+                    tableContent = `
+                    <tr>
+                        <td>Mango</td>
+                        <td>60 kcal</td>
+                        <td>Vitamin C, Vitamin A, Folate, Fiber</td>
+                        <td>Boosts immunity, improves digestion, and promotes healthy skin</td>
+                    </tr>
+                    <tr>
+                        <td>Watermelon</td>
+                        <td>30 kcal</td>
+                        <td>Vitamin C, Vitamin A, Potassium, Antioxidants</td>
+                        <td>Hydrates the body, promotes heart health, and reduces inflammation</td>
+                    </tr>
+                    <tr>
+                        <td>Muskmelon</td>
+                        <td>34 kcal</td>
+                        <td>Vitamin C, Vitamin A, Potassium, Folate</td>
+                        <td>Aids in hydration, supports vision health, and helps in weight management</td>
+                    </tr>
+                    <tr>
+                        <td>Litchi</td>
+                        <td>66 kcal</td>
+                        <td>Vitamin C, Copper, Potassium, Antioxidants</td>
+                        <td>Boosts immunity, improves skin health, and aids digestion</td>
+                    </tr>
+                    <tr>
+                        <td>Apricot</td>
+                        <td>48 kcal</td>
+                        <td>Vitamin A, Vitamin C, Potassium, Fiber</td>
+                        <td>Promotes eye health, improves skin texture, and aids in digestion</td>
+                    </tr>
+                    <tr>
+                        <td>Peach</td>
+                        <td>39 kcal</td>
+                        <td>Vitamin C, Vitamin A, Potassium, Fiber</td>
+                        <td>Supports skin health, aids digestion, and promotes heart health</td>
+                    </tr>
+                    <tr>
+                        <td>Cherry</td>
+                        <td>63 kcal</td>
+                        <td>Vitamin C, Potassium, Antioxidants, Fiber</td>
+                        <td>Reduces inflammation, improves sleep quality, and supports heart health</td>
+                    </tr>
+                    <tr>
+                        <td>Guava</td>
+                        <td>68 kcal</td>
+                        <td>Vitamin C, Fiber, Folate, Vitamin A</td>
+                        <td>Boosts immunity, improves digestive health, and supports skin health</td>
+                    </tr>
+                    <tr>
+                        <td>Papaya</td>
+                        <td>43 kcal</td>
+                        <td>Vitamin C, Vitamin A, Folate, Antioxidants</td>
+                        <td>Aids digestion, improves skin health, and boosts immunity</td>
+                    </tr>
+                    <tr>
+                        <td>Bael</td>
+                        <td>73 kcal</td>
+                        <td>Vitamin C, Fiber, Calcium, Iron</td>
+                        <td>Aids digestion, supports respiratory health, and boosts immunity</td>
+                    </tr>
+                    <tr>
+                        <td>Pineapple</td>
+                        <td>50 kcal</td>
+                        <td>Vitamin C, Manganese, Bromelain, Antioxidants</td>
+                        <td>Aids digestion, reduces inflammation, and boosts immunity</td>
+                    </tr>
+                    <tr>
+                        <td>Jamun</td>
+                        <td>60 kcal</td>
+                        <td>Vitamin C, Iron, Antioxidants</td>
+                        <td>Regulates blood sugar, improves digestion, and boosts immunity</td>
+                    </tr>
+                    `;
+                }
+                            else if (region === 'n' && season === 'Sum' && foodType === 'Vegetable') {
+                    tableContent = `
+                    <tr>
+                        <td>Ladyfinger</td>
+                        <td>33 kcal</td>
+                        <td>Fiber, Vitamin C</td>
+                        <td>Supports digestion, aids weight management</td>
+                    </tr>
+                    <tr>
+                        <td>Bittergourd</td>
+                        <td>17 kcal</td>
+                        <td>Vitamins A, C</td>
+                        <td>May lower blood sugar, boosts immune system</td>
+                    </tr>
+                    <tr>
+                        <td>Bottlegourd</td>
+                        <td>20 kcal</td>
+                        <td>Water, Vitamin C</td>
+                        <td>Hydrating, promotes heart health</td>
+                    </tr>
+                    <tr>
+                        <td>Cucumber</td>
+                        <td>16 kcal</td>
+                        <td>Water, Vitamins K, C</td>
+                        <td>Hydrating, supports skin health</td>
+                    </tr>
+                    <tr>
+                        <td>Brinjal</td>
+                        <td>25 kcal</td>
+                        <td>Fiber, Antioxidants</td>
+                        <td>Aids weight management, supports heart health</td>
+                    </tr>
+                    <tr>
+                        <td>Radish</td>
+                        <td>16 kcal</td>
+                        <td>Vitamins C, B6</td>
+                        <td>Supports digestion, may help in detoxification</td>
+                    </tr>
+                    <tr>
+                        <td>Arbi</td>
+                        <td>92 kcal</td>
+                        <td>Fiber, Vitamins B6, C</td>
+                        <td>Aids digestion, may help in weight management</td>
+                    </tr>
+                    <tr>
+                        <td>Green Beans</td>
+                        <td>31 kcal</td>
+                        <td>Fiber, Vitamins A, C</td>
+                        <td>Supports digestion, good for heart health</td>
+                    </tr>
+                    <tr>
+                        <td>Pumpkin</td>
+                        <td>26 kcal</td>
+                        <td>Vitamins A, C, E</td>
+                        <td>Supports eye health, may aid weight loss</td>
+                    </tr>
+                    <tr>
+                        <td>Tomato</td>
+                        <td>18 kcal</td>
+                        <td>Vitamins C, K</td>
+                        <td>Antioxidant properties, supports heart health</td>
+                    </tr>
+                    `;
+                }
+                            else if (region === 'n' && season === 'Sum' && foodType === 'pulses') {
+                    tableContent = `
+                    <tr>
+                        <td>Rice</td>
+                        <td>130 kcal</td>
+                        <td>Carbohydrates</td>
+                        <td>Provides energy, supports digestive health</td>
+                    </tr>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>340 kcal</td>
+                        <td>Fiber, B vitamins</td>
+                        <td>Supports digestion, may help manage weight</td>
+                    </tr>
+                    <tr>
+                        <td>Bajra</td>
+                        <td>378 kcal</td>
+                        <td>Fiber, Magnesium</td>
+                        <td>Good for digestion, may help control blood sugar</td>
+                    </tr>
+                    <tr>
+                        <td>Barley</td>
+                        <td>352 kcal</td>
+                        <td>Fiber, Selenium</td>
+                        <td>Supports heart health, may aid weight loss</td>
+                    </tr>
+                    <tr>
+                        <td>Moong Dal</td>
+                        <td>105 kcal</td>
+                        <td>Protein, Fiber</td>
+                        <td>Supports digestion, aids weight management</td>
+                    </tr>
+                    <tr>
+                        <td>Toor Dal</td>
+                        <td>343 kcal</td>
+                        <td>Protein, Fiber</td>
+                        <td>Supports heart health, may help control blood sugar</td>
+                    </tr>
+                    <tr>
+                        <td>Urad Dal</td>
+                        <td>341 kcal</td>
+                        <td>Protein, Fiber</td>
+                        <td>Supports digestion, may help in weight management</td>
+                    </tr>
+                    <tr>
+                        <td>Chana Dal</td>
+                        <td>387 kcal</td>
+                        <td>Protein, Fiber</td>
+                        <td>Supports digestion, may help control blood sugar</td>
+                    </tr>
+                    <tr>
+                        <td>Masoor Dal</td>
+                        <td>116 kcal</td>
+                        <td>Protein, Fiber</td>
+                        <td>Good for heart health, aids in weight management</td>
+                    </tr>
+                    `;
+                }
+                            else if (region === 'n' && season === 'Win' && foodType === 'Fruit') {
+                    tableContent = `
+                    <tr>
+                        <td>Guava</td>
+                        <td>68 kcal</td>
+                        <td>Vitamin C, Fiber, Folate, Vitamin A</td>
+                        <td>Boosts immunity, improves digestive health, and supports skin health</td>
+                    </tr>
+                    <tr>
+                        <td>Papaya</td>
+                        <td>43 kcal</td>
+                        <td>Vitamin C, Vitamin A, Folate, Antioxidants</td>
+                        <td>Aids digestion, improves skin health, and boosts immunity</td>
+                    </tr>
+                    <tr>
+                        <td>Pomegranate</td>
+                        <td>83 kcal</td>
+                        <td>Vitamin C, Potassium, Fiber, Antioxidants</td>
+                        <td>Supports heart health, reduces inflammation, and improves memory</td>
+                    </tr>
+                    <tr>
+                        <td>Apple</td>
+                        <td>52 kcal</td>
+                        <td>Vitamin C, Fiber, Antioxidants</td>
+                        <td>Aids in weight management, promotes heart health, and improves gut health</td>
+                    </tr>
+                    <tr>
+                        <td>Oranges</td>
+                        <td>47 kcal</td>
+                        <td>Vitamin C, Fiber, Antioxidants</td>
+                        <td>Boosts immunity, supports heart health, and improves skin health</td>
+                    </tr>
+                    <tr>
+                        <td>Banana</td>
+                        <td>89 kcal</td>
+                        <td>Potassium, Vitamin C, Vitamin B6, Fiber</td>
+                        <td>Provides energy, supports digestive health, and regulates blood pressure</td>
+                    </tr>
+                    <tr>
+                        <td>Strawberry</td>
+                        <td>32 kcal</td>
+                        <td>Vitamin C, Manganese, Antioxidants</td>
+                        <td>Supports heart health, boosts immunity, and promotes healthy skin</td>
+                    </tr>
+                    <tr>
+                        <td>Chikoo</td>
+                        <td>83 kcal</td>
+                        <td>Vitamin C, Fiber, Antioxidants</td>
+                        <td>Aids digestion, promotes healthy skin, and boosts immunity</td>
+                    </tr>
+                    `;
+                }
+                            else if (region === 'n' && season === 'Win' && foodType === 'Vegetable') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Green Mustard</td> 
+                        <td>28 kcal</td> 
+                        <td>Vitamins A, C, K</td> 
+                        <td>Supports bone health, boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Spinach</td> 
+                        <td>23 kcal</td> 
+                        <td>Iron, Vitamins A, C</td> 
+                        <td>Promotes eye health, supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Carrots</td> 
+                        <td>41 kcal</td> 
+                        <td>Beta-carotene, Fiber</td> 
+                        <td>Good for eyesight, supports heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Cabbage</td> 
+                        <td>25 kcal</td> 
+                        <td>Vitamins K, C</td> 
+                        <td>Aids digestion, supports heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Cauliflower</td> 
+                        <td>25 kcal</td> 
+                        <td>Fiber, Vitamins C, K</td> 
+                        <td>Supports detoxification, may reduce cancer risk</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Radish</td> 
+                        <td>16 kcal</td> 
+                        <td>Vitamins C, B6</td> 
+                        <td>Supports digestion, may help in detoxification</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Methi</td> 
+                        <td>49 kcal</td> 
+                        <td>Fiber, Iron</td> 
+                        <td>May lower blood sugar, supports heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Turnip</td> 
+                        <td>28 kcal</td> 
+                        <td>Vitamins C, K</td> 
+                        <td>Aids digestion, may support weight loss</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Broccoli</td> 
+                        <td>34 kcal</td> 
+                        <td>Fiber, Vitamins C, K</td> 
+                        <td>Supports heart health, may reduce cancer risk</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Green Peas</td> 
+                        <td>81 kcal</td> 
+                        <td>Fiber, Protein</td> 
+                        <td>Supports digestion, may help in weight management</td> 
+                    </tr> 
+                    `;
+                            }
+                                    
+                            else if (region === 'n' && season === 'Win' && foodType === 'pulses') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Rice</td> 
+                        <td>130 kcal</td> 
+                        <td>Carbohydrates</td> 
+                        <td>Provides energy, supports digestive health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Wheat</td> 
+                        <td>340 kcal</td> 
+                        <td>Fiber, B vitamins</td> 
+                        <td>Supports digestion, may help manage weight</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Barley</td> 
+                        <td>352 kcal</td> 
+                        <td>Fiber, Selenium</td> 
+                        <td>Supports heart health, may aid weight loss</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Mustard Seeds</td> 
+                        <td>508 kcal</td> 
+                        <td>Omega-3 fatty acids, Protein</td> 
+                        <td>Supports heart health, anti-inflammatory properties</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Moong Dal</td> 
+                        <td>105 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, aids weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Urad Dal</td> 
+                        <td>341 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, may help in weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Arhar Dal</td> 
+                        <td>353 kcal</td> 
+                        <td>Protein, Iron</td> 
+                        <td>Supports muscle health, may boost immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Chana Dal</td> 
+                        <td>387 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, may help control blood sugar</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Masoor Dal</td> 
+                        <td>116 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Good for heart health, aids in weight management</td> 
+                    </tr> 
+                    `;
+                }
+                            else if (region === 's' && season === 'Win' && foodType === 'Fruit') { 
+                    tableContent = ` 
+                
+                    <tr> 
+                        <td>Guava</td> 
+                        <td>68 kcal</td> 
+                        <td>Vitamin C, Fiber, Folate, Vitamin A</td> 
+                        <td>Boosts immunity, improves digestive health, and supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Papaya</td> 
+                        <td>43 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Folate, Antioxidants</td> 
+                        <td>Aids digestion, improves skin health, and boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Pomegranate</td> 
+                        <td>83 kcal</td> 
+                        <td>Vitamin C, Potassium, Fiber, Antioxidants</td> 
+                        <td>Supports heart health, reduces inflammation, and improves memory</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Oranges</td> 
+                        <td>47 kcal</td> 
+                        <td>Vitamin C, Fiber, Antioxidants</td> 
+                        <td>Boosts immunity, supports heart health, and improves skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Banana</td> 
+                        <td>89 kcal</td> 
+                        <td>Potassium, Vitamin C, Vitamin B6, Fiber</td> 
+                        <td>Provides energy, supports digestive health, and regulates blood pressure</td> 
+                    </tr> 
+                    `;
+                    }
+                    else if (region === 's' && season === 'Win' && foodType === 'Vegetable') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Green Mustard</td> 
+                        <td>28 kcal</td> 
+                        <td>Vitamins A, C, K</td> 
+                        <td>Supports bone health, boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Spinach</td> 
+                        <td>23 kcal</td> 
+                        <td>Iron, Vitamins A, C</td> 
+                        <td>Promotes eye health, supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Carrots</td> 
+                        <td>41 kcal</td> 
+                        <td>Beta-carotene, Fiber</td> 
+                        <td>Good for eyesight, supports heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Cabbage</td> 
+                        <td>25 kcal</td> 
+                        <td>Vitamins K, C</td> 
+                        <td>Aids digestion, supports heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Cauliflower</td> 
+                        <td>25 kcal</td> 
+                        <td>Fiber, Vitamins C, K</td> 
+                        <td>Supports detoxification, may reduce cancer risk</td> 
+                    </tr> 
+                    `;
+                    }
+                            else if (region === 's' && season === 'Win' && foodType === 'pulses') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Rice</td> 
+                        <td>130 kcal</td> 
+                        <td>Carbohydrates</td> 
+                        <td>Provides energy, supports digestive health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Wheat</td> 
+                        <td>340 kcal</td> 
+                        <td>Fiber, B vitamins</td> 
+                        <td>Supports digestion, may help manage weight</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Moong Dal</td> 
+                        <td>105 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, aids weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Toor Dal</td> 
+                        <td>343 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports heart health, may help control blood sugar</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Urad Dal</td> 
+                        <td>341 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, may help in weight management</td> 
+                    </tr> 
+                    `;
+                } 
+                            else if (region === 's' && season === 'Mon' && foodType === 'Fruit') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Mango</td> 
+                        <td>60 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Folate, Fiber</td> 
+                        <td>Boosts immunity, improves digestion, and promotes healthy skin</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Guava</td> 
+                        <td>68 kcal</td> 
+                        <td>Vitamin C, Fiber, Folate, Vitamin A</td> 
+                        <td>Boosts immunity, improves digestive health, and supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Papaya</td> 
+                        <td>43 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Folate, Antioxidants</td> 
+                        <td>Aids digestion, improves skin health, and boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Banana</td> 
+                        <td>89 kcal</td> 
+                        <td>Potassium, Vitamin C, Vitamin B6, Fiber</td> 
+                        <td>Provides energy, supports digestive health, and regulates blood pressure</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Jackfruit</td> 
+                        <td>95 kcal</td> 
+                        <td>Vitamin C, Potassium, Fiber</td> 
+                        <td>Supports digestive health, promotes heart health, and boosts immunity</td> 
+                    </tr> 
+                    `;
+                } 
+                            else if (region === 's' && season === 'Mon' && foodType === 'Vegetable') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Ladyfinger</td> 
+                        <td>33 kcal</td> 
+                        <td>Fiber, Vitamin C</td> 
+                        <td>Supports digestion, aids weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Bittergourd</td> 
+                        <td>17 kcal</td> 
+                        <td>Vitamins A, C</td> 
+                        <td>May lower blood sugar, boosts immune system</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Bottlegourd</td> 
+                        <td>20 kcal</td> 
+                        <td>Water, Vitamin C</td> 
+                        <td>Hydrating, promotes heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Green Chillies</td> 
+                        <td>40 kcal</td> 
+                        <td>Vitamins A, C, B6</td> 
+                        <td>Boosts metabolism, aids digestion</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Turai</td> 
+                        <td>20 kcal</td> 
+                        <td>Fiber, Vitamin C</td> 
+                        <td>Supports hydration, aids weight loss</td> 
+                    </tr> 
+                    `;
+                }
+                            else if (region === 's' && season === 'Mon' && foodType === 'pulses') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Rice</td> 
+                        <td>130 kcal</td> 
+                        <td>Carbohydrates</td> 
+                        <td>Provides energy, supports digestive health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Moong Dal</td> 
+                        <td>105 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, aids weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Toor Dal</td> 
+                        <td>343 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports heart health, may help control blood sugar</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Urad Dal</td> 
+                        <td>341 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, may help in weight management</td> 
+                    </tr> 
+                    `;
+                }
+                            else if (region === 's' && season === 'Sum' && foodType === 'Fruit') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Mango</td> 
+                        <td>60 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Folate, Fiber</td> 
+                        <td>Boosts immunity, improves digestion, and promotes healthy skin</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Watermelon</td> 
+                        <td>30 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Potassium, Antioxidants</td> 
+                        <td>Hydrates the body, promotes heart health, and reduces inflammation</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Muskmelon</td> 
+                        <td>34 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Potassium, Folate</td> 
+                        <td>Aids in hydration, supports vision health, and helps in weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Guava</td> 
+                        <td>68 kcal</td> 
+                        <td>Vitamin C, Fiber, Folate, Vitamin A</td> 
+                        <td>Boosts immunity, improves digestive health, and supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Papaya</td> 
+                        <td>43 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Folate, Antioxidants</td> 
+                        <td>Aids digestion, improves skin health, and boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Banana</td> 
+                        <td>89 kcal</td> 
+                        <td>Potassium, Vitamin C, Vitamin B6, Fiber</td> 
+                        <td>Provides energy, supports digestive health, and regulates blood pressure</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Coconut</td> 
+                        <td>354 kcal</td> 
+                        <td>Fiber, Manganese, Copper</td> 
+                        <td>Supports heart health, improves digestion, and provides quick energy</td> 
+                    </tr> 
+                    `;
+                }
+                    else if (region === 's' && season === 'Sum' && foodType === 'Vegetable') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Ladyfinger</td> 
+                        <td>33 kcal</td> 
+                        <td>Fiber, Vitamin C</td> 
+                        <td>Supports digestion, aids weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Bottlegourd</td> 
+                        <td>20 kcal</td> 
+                        <td>Water, Vitamin C</td> 
+                        <td>Hydrating, promotes heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Green Chillies</td> 
+                        <td>40 kcal</td> 
+                        <td>Vitamins A, C, B6</td> 
+                        <td>Boosts metabolism, aids digestion</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Spinach</td> 
+                        <td>23 kcal</td> 
+                        <td>Iron, Vitamins A, C</td> 
+                        <td>Promotes eye health, supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Cucumber</td> 
+                        <td>16 kcal</td> 
+                        <td>Water, Vitamins K, C</td> 
+                        <td>Hydrating, supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Brinjal</td> 
+                        <td>25 kcal</td> 
+                        <td>Fiber, Antioxidants</td> 
+                        <td>Aids weight management, supports heart health</td> 
+                    </tr> 
+                    `;
+                }
+                            else if (region === 's' && season === 'Sum' && foodType === 'pulses') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Rice</td> 
+                        <td>130 kcal</td> 
+                        <td>Carbohydrates</td> 
+                        <td>Provides energy, supports digestive health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Jowar</td> 
+                        <td>329 kcal</td> 
+                        <td>Fiber, Protein</td> 
+                        <td>Gluten-free, supports heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Ragi</td> 
+                        <td>336 kcal</td> 
+                        <td>Calcium, Iron</td> 
+                        <td>Supports bone health, aids digestion</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Moong Dal</td> 
+                        <td>105 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, aids weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Toor Dal</td> 
+                        <td>343 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports heart health, may help control blood sugar</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Urad Dal</td> 
+                        <td>341 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, may help in weight management</td> 
+                    </tr> 
+                    `;
+                }
+                            else if (region === 'e' && season === 'Sum' && foodType === 'Fruit') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Mango</td> 
+                        <td>60 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Folate, Fiber</td> 
+                        <td>Boosts immunity, improves digestion, and promotes healthy skin</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Watermelon</td> 
+                        <td>30 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Potassium, Antioxidants</td> 
+                        <td>Hydrates the body, promotes heart health, and reduces inflammation</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Muskmelon</td> 
+                        <td>34 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Potassium, Folate</td> 
+                        <td>Aids in hydration, supports vision health, and helps in weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Litchi</td> 
+                        <td>66 kcal</td> 
+                        <td>Vitamin C, Copper, Potassium, Antioxidants</td> 
+                        <td>Boosts immunity, improves skin health, and aids digestion</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Guava</td> 
+                        <td>68 kcal</td> 
+                        <td>Vitamin C, Fiber, Folate, Vitamin A</td> 
+                        <td>Boosts immunity, improves digestive health, and supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Papaya</td> 
+                        <td>43 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Folate, Antioxidants</td> 
+                        <td>Aids digestion, improves skin health, and boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Pineapple</td> 
+                        <td>50 kcal</td> 
+                        <td>Vitamin C, Manganese, Bromelain, Antioxidants</td> 
+                        <td>Aids digestion, reduces inflammation, and boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Jackfruit</td> 
+                        <td>95 kcal</td> 
+                        <td>Vitamin C, Potassium, Fiber</td> 
+                        <td>Supports digestive health, promotes heart health, and boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Custard Apple</td> 
+                        <td>75 kcal</td> 
+                        <td>Vitamin C, Fiber, Antioxidants</td> 
+                        <td>Supports digestive health, boosts energy, and improves skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Coconut</td> 
+                        <td>354 kcal</td> 
+                        <td>Fiber, Manganese, Copper</td> 
+                        <td>Supports heart health, improves digestion, and provides quick energy</td> 
+                    </tr> 
+                    `;
+                }
+                            else if (region === 'e' && season === 'Sum' && foodType === 'Vegetable') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Ladyfinger</td> 
+                        <td>33 kcal</td> 
+                        <td>Fiber, Vitamin C</td> 
+                        <td>Supports digestion, aids weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Bittergourd</td> 
+                        <td>17 kcal</td> 
+                        <td>Vitamins A, C</td> 
+                        <td>May lower blood sugar, boosts immune system</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Bottlegourd</td> 
+                        <td>20 kcal</td> 
+                        <td>Water, Vitamin C</td> 
+                        <td>Hydrating, promotes heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Green Chillies</td> 
+                        <td>40 kcal</td> 
+                        <td>Vitamins A, C, B6</td> 
+                        <td>Boosts metabolism, aids digestion</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Turai</td> 
+                        <td>20 kcal</td> 
+                        <td>Fiber, Vitamin C</td> 
+                        <td>Supports hydration, aids weight loss</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Cucumber</td> 
+                        <td>16 kcal</td> 
+                        <td>Water, Vitamins K, C</td> 
+                        <td>Hydrating, supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Brinjal</td> 
+                        <td>25 kcal</td> 
+                        <td>Fiber, Antioxidants</td> 
+                        <td>Aids weight management, supports heart health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Drumsticks</td> 
+                        <td>37 kcal</td> 
+                        <td>Vitamins A, C, Iron</td> 
+                        <td>Boosts immunity, aids digestion</td> 
+                    </tr> 
+                    `;
+                }
+                    else if (region === 'e' && season === 'Sum' && foodType === 'pulses') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Wheat</td> 
+                        <td>340 kcal</td> 
+                        <td>Fiber, B vitamins</td> 
+                        <td>Supports digestion, may help manage weight</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Maize</td> 
+                        <td>365 kcal</td> 
+                        <td>Carbohydrates, Fiber</td> 
+                        <td>Provides energy, supports digestion</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Moong Dal</td> 
+                        <td>105 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, aids weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Urad Dal</td> 
+                        <td>341 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, may help in weight management</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Arhar Dal</td> 
+                        <td>353 kcal</td> 
+                        <td>Protein, Iron</td> 
+                        <td>Supports muscle health, may boost immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Chana Dal</td> 
+                        <td>387 kcal</td> 
+                        <td>Protein, Fiber</td> 
+                        <td>Supports digestion, may help control blood sugar</td> 
+                    </tr> 
+                    `;
+                }
+                            else if (region === 'e' && season === 'Mon' && foodType === 'Fruit') { 
+                    tableContent = ` 
+                    <tr> 
+                        <td>Mango</td> 
+                        <td>60 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Folate, Fiber</td> 
+                        <td>Boosts immunity, improves digestion, and promotes healthy skin</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Litchi</td> 
+                        <td>66 kcal</td> 
+                        <td>Vitamin C, Copper, Potassium, Antioxidants</td> 
+                        <td>Boosts immunity, improves skin health, and aids digestion</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Guava</td> 
+                        <td>68 kcal</td> 
+                        <td>Vitamin C, Fiber, Folate, Vitamin A</td> 
+                        <td>Boosts immunity, improves digestive health, and supports skin health</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Papaya</td> 
+                        <td>43 kcal</td> 
+                        <td>Vitamin C, Vitamin A, Folate, Antioxidants</td> 
+                        <td>Aids digestion, improves skin health, and boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Banana</td> 
+                        <td>89 kcal</td> 
+                        <td>Potassium, Vitamin C, Vitamin B6, Fiber</td> 
+                        <td>Provides energy, supports digestive health, and regulates blood pressure</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Amla</td> 
+                        <td>60 kcal</td> 
+                        <td>Vitamin C, Antioxidants, Fiber</td> 
+                        <td>Boosts immunity, improves skin health, and aids digestion</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Jackfruit</td> 
+                        <td>95 kcal</td> 
+                        <td>Vitamin C, Potassium, Fiber</td> 
+                        <td>Supports digestive health, promotes heart health, and boosts immunity</td> 
+                    </tr> 
+                    <tr> 
+                        <td>Coconut</td> 
+                        <td>354 kcal</td> 
+                        <td>Fiber, Manganese, Copper</td> 
+                        <td>Supports heart health, improves digestion, and provides quick energy</td> 
+                    </tr> 
+                    `;
+                }
+                        else if (region === 'e' && season === 'Mon' && foodType === 'Vegetable') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Bittergourd</td> 
+                    <td>17 kcal</td> 
+                    <td>Vitamins A, C</td> 
+                    <td>May lower blood sugar, boosts immune system</td> 
+                </tr> 
+                <tr> 
+                    <td>Bottlegourd</td> 
+                    <td>20 kcal</td> 
+                    <td>Water, Vitamin C</td> 
+                    <td>Hydrating, promotes heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Green Chillies</td> 
+                    <td>40 kcal</td> 
+                    <td>Vitamins A, C, B6</td> 
+                    <td>Boosts metabolism, aids digestion</td> 
+                </tr> 
+                <tr> 
+                    <td>Turai</td> 
+                    <td>20 kcal</td> 
+                    <td>Fiber, Vitamin C</td> 
+                    <td>Supports hydration, aids weight loss</td> 
+                </tr> 
+                <tr> 
+                    <td>Spinach</td> 
+                    <td>23 kcal</td> 
+                    <td>Iron, Vitamins A, C</td> 
+                    <td>Promotes eye health, supports skin health</td> 
+                </tr> 
+                <tr> 
+                    <td>Cabbage</td> 
+                    <td>25 kcal</td> 
+                    <td>Vitamins K, C</td> 
+                    <td>Aids digestion, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Cauliflower</td> 
+                    <td>25 kcal</td> 
+                    <td>Fiber, Vitamins C, K</td> 
+                    <td>Supports detoxification, may reduce cancer risk</td> 
+                </tr> 
+                <tr> 
+                    <td>Drumsticks</td> 
+                    <td>37 kcal</td> 
+                    <td>Vitamins A, C, Iron</td> 
+                    <td>Boosts immunity, aids digestion</td> 
+                </tr> 
+                `;
+            }
+                    else if (region === 'e' && season === 'Mon' && foodType === 'pulses') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Rice</td> 
+                    <td>130 kcal</td> 
+                    <td>Carbohydrates</td> 
+                    <td>Provides energy, supports digestive health</td> 
+                </tr> 
+                <tr> 
+                    <td>Maize</td> 
+                    <td>365 kcal</td> 
+                    <td>Carbohydrates, Fiber</td> 
+                    <td>Provides energy, supports digestion</td> 
+                </tr> 
+                <tr> 
+                    <td>Moong Dal</td> 
+                    <td>105 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, aids weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Urad Dal</td> 
+                    <td>341 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help in weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Arhar Dal</td> 
+                    <td>353 kcal</td> 
+                    <td>Protein, Iron</td> 
+                    <td>Supports muscle health, may boost immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Chana Dal</td> 
+                    <td>387 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help control blood sugar</td> 
+                </tr> 
+                `;
+            }
+                    else if (region === 'w' && season === 'Win' && foodType === 'Fruit') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Bael</td> 
+                    <td>73 kcal</td> 
+                    <td>Vitamin C, Fiber, Calcium, Iron</td> 
+                    <td>Aids digestion, supports respiratory health, and boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Pomegranate</td> 
+                    <td>83 kcal</td> 
+                    <td>Vitamin C, Potassium, Fiber, Antioxidants</td> 
+                    <td>Supports heart health, reduces inflammation, and improves memory</td> 
+                </tr> 
+                <tr> 
+                    <td>Apple</td> 
+                    <td>52 kcal</td> 
+                    <td>Vitamin C, Fiber, Antioxidants</td> 
+                    <td>Aids in weight management, promotes heart health, and improves gut health</td> 
+                </tr> 
+                <tr> 
+                    <td>Banana</td> 
+                    <td>89 kcal</td> 
+                    <td>Potassium, Vitamin C, Vitamin B6, Fiber</td> 
+                    <td>Provides energy, supports digestive health, and regulates blood pressure</td> 
+                </tr> 
+                <tr> 
+                    <td>Chikoo</td> 
+                    <td>83 kcal</td> 
+                    <td>Vitamin C, Fiber, Antioxidants</td> 
+                    <td>Aids digestion, promotes healthy skin, and boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Grapes</td> 
+                    <td>69 kcal</td> 
+                    <td>Vitamin C, Vitamin K, Antioxidants</td> 
+                    <td>Supports heart health, reduces inflammation, and boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Amla</td> 
+                    <td>60 kcal</td> 
+                    <td>Vitamin C, Antioxidants, Fiber</td> 
+                    <td>Boosts immunity, improves skin health, and aids digestion</td> 
+                </tr> 
+                `;
+            }
+                    else if (region === 'w' && season === 'Win' && foodType === 'Vegetable') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Bittergourd</td> 
+                    <td>17 kcal</td> 
+                    <td>Vitamins A, C</td> 
+                    <td>May lower blood sugar, boosts immune system</td> 
+                </tr> 
+                <tr> 
+                    <td>Bottlegourd</td> 
+                    <td>20 kcal</td> 
+                    <td>Water, Vitamin C</td> 
+                    <td>Hydrating, promotes heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Cabbage</td> 
+                    <td>25 kcal</td> 
+                    <td>Vitamins K, C</td> 
+                    <td>Aids digestion, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Brinjal</td> 
+                    <td>25 kcal</td> 
+                    <td>Fiber, Antioxidants</td> 
+                    <td>Aids weight management, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Drumsticks</td> 
+                    <td>37 kcal</td> 
+                    <td>Vitamins A, C, Iron</td> 
+                    <td>Boosts immunity, aids digestion</td> 
+                </tr> 
+                <tr> 
+                    <td>Green Peas</td> 
+                    <td>81 kcal</td> 
+                    <td>Fiber, Protein</td> 
+                    <td>Supports digestion, may help in weight management</td> 
+                </tr>
+                <tr>
+                    <td>Spinach</td>
+                    <td>23 kcal</td>
+                    <td>Iron, Vitamins A, C</td>
+                    <td>Promotes eye health, supports skin health</td>
+                </tr>
+                <tr>
+                    <td>Carrots</td>
+                    <td>41 kcal</td>
+                    <td>Beta-carotene, Fiber</td>
+                    <td>Good for eyesight, supports heart health</td>
+                </tr>
+                <tr>
+                    <td>Cauliflower</td>
+                    <td>25 kcal</td>
+                    <td>Fiber, Vitamins C, K</td>
+                    <td>Supports detoxification, may reduce cancer risk</td>
+                </tr>
+                <tr>
+                    <td>Cucumber</td>
+                    <td>16 kcal</td>
+                    <td>Water, Vitamins K, C</td>
+                    <td>Hydrating, supports skin health</td>
+                </tr>
+                <tr>
+                    <td>Radish</td>
+                    <td>16 kcal</td>
+                    <td>Vitamins C, B6</td>
+                    <td>Supports digestion, may help in detoxification</td>
+                </tr>
+                <tr>
+                    <td>Arbi</td>
+                    <td>92 kcal</td>
+                    <td>Fiber, Vitamins B6, C</td>
+                    <td>Aids digestion, may help in weight management</td>
+                </tr>
+                <tr>
+                    <td>Green Beans</td>
+                    <td>31 kcal</td>
+                    <td>Fiber, Vitamins A, C</td>
+                    <td>Supports digestion, good for heart health</td>
+                </tr>
+                <tr>
+                    <td>Tomato</td>
+                    <td>18 kcal</td>
+                    <td>Vitamins C, K</td>
+                    <td>Antioxidant properties, supports heart health</td>
+                </tr>
+                `;
+            }
+
+                    else if (region === 'w' && season === 'Win' && foodType === 'pulses') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Rice</td> 
+                    <td>130 kcal</td> 
+                    <td>Carbohydrates</td> 
+                    <td>Provides energy, supports digestive health</td> 
+                </tr> 
+                <tr> 
+                    <td>Wheat</td> 
+                    <td>340 kcal</td> 
+                    <td>Fiber, B vitamins</td> 
+                    <td>Supports digestion, may help manage weight</td> 
+                </tr> 
+                <tr> 
+                    <td>Jowar</td> 
+                    <td>329 kcal</td> 
+                    <td>Fiber, Protein</td> 
+                    <td>Gluten-free, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Bajra</td> 
+                    <td>378 kcal</td> 
+                    <td>Fiber, Magnesium</td> 
+                    <td>Good for digestion, may help control blood sugar</td> 
+                </tr> 
+                <tr> 
+                    <td>Moong Dal</td> 
+                    <td>105 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, aids weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Urad Dal</td> 
+                    <td>341 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help in weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Arhar Dal</td> 
+                    <td>353 kcal</td> 
+                    <td>Protein, Iron</td> 
+                    <td>Supports muscle health, may boost immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Chana Dal</td> 
+                    <td>387 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help control blood sugar</td> 
+                </tr> 
+                <tr> 
+                    <td>Masoor Dal</td> 
+                    <td>116 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Good for heart health, aids in weight management</td> 
+                </tr> 
+                `;
+            }
+                    else if (region === 'w' && season === 'Mon' && foodType === 'Fruit') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Papaya</td> 
+                    <td>43 kcal</td> 
+                    <td>Vitamin C, Vitamin A, Folate, Antioxidants</td> 
+                    <td>Aids digestion, improves skin health, and boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Pomegranate</td> 
+                    <td>83 kcal</td> 
+                    <td>Vitamin C, Potassium, Fiber, Antioxidants</td> 
+                    <td>Supports heart health, reduces inflammation, and improves memory</td> 
+                </tr> 
+                <tr> 
+                    <td>Banana</td> 
+                    <td>89 kcal</td> 
+                    <td>Potassium, Vitamin C, Vitamin B6, Fiber</td> 
+                    <td>Provides energy, supports digestive health, and regulates blood pressure</td> 
+                </tr> 
+                <tr> 
+                    <td>Chikoo</td> 
+                    <td>83 kcal</td> 
+                    <td>Vitamin C, Fiber, Antioxidants</td> 
+                    <td>Aids digestion, promotes healthy skin, and boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Amla</td> 
+                    <td>60 kcal</td> 
+                    <td>Vitamin C, Antioxidants, Fiber</td> 
+                    <td>Boosts immunity, improves skin health, and aids digestion</td> 
+                </tr> 
+                `;
+            }
+                    else if (region === 'w' && season === 'Mon' && foodType === 'Vegetable') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Bittergourd</td> 
+                    <td>17 kcal</td> 
+                    <td>Vitamins A, C</td> 
+                    <td>May lower blood sugar, boosts immune system</td> 
+                </tr> 
+                <tr> 
+                    <td>Bottlegourd</td> 
+                    <td>20 kcal</td> 
+                    <td>Water, Vitamin C</td> 
+                    <td>Hydrating, promotes heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Cabbage</td> 
+                    <td>25 kcal</td> 
+                    <td>Vitamins K, C</td> 
+                    <td>Aids digestion, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Brinjal</td> 
+                    <td>25 kcal</td> 
+                    <td>Fiber, Antioxidants</td> 
+                    <td>Aids weight management, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Drumsticks</td> 
+                    <td>37 kcal</td> 
+                    <td>Vitamins A, C, Iron</td> 
+                    <td>Boosts immunity, aids digestion</td> 
+                </tr> 
+                <tr> 
+                    <td>Green Peas</td> 
+                    <td>81 kcal</td> 
+                    <td>Fiber, Protein</td> 
+                    <td>Supports digestion, may help in weight management</td> 
+                </tr> 
+                `;
+            }
+                    else if (region === 'w' && season === 'Mon' && foodType === 'pulses') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Rice</td> 
+                    <td>130 kcal</td> 
+                    <td>Carbohydrates</td> 
+                    <td>Provides energy, supports digestive health</td> 
+                </tr> 
+                <tr> 
+                    <td>Jowar</td> 
+                    <td>329 kcal</td> 
+                    <td>Fiber, Protein</td> 
+                    <td>Gluten-free, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Bajra</td> 
+                    <td>378 kcal</td> 
+                    <td>Fiber, Magnesium</td> 
+                    <td>Good for digestion, may help control blood sugar</td> 
+                </tr> 
+                <tr> 
+                    <td>Barley</td> 
+                    <td>352 kcal</td> 
+                    <td>Fiber, Selenium</td> 
+                    <td>Supports heart health, may aid weight loss</td> 
+                </tr> 
+                <tr> 
+                    <td>Moong Dal</td> 
+                    <td>105 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, aids weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Urad Dal</td> 
+                    <td>341 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help in weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Arhar Dal</td> 
+                    <td>353 kcal</td> 
+                    <td>Protein, Iron</td> 
+                    <td>Supports muscle health, may boost immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Chana Dal</td> 
+                    <td>387 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help control blood sugar</td> 
+                </tr> 
+                `;
+            }
+                        else if (region === 'w' && season === 'Sum' && foodType === 'Fruit') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Mango</td> 
+                    <td>60 kcal</td> 
+                    <td>Vitamin C, Vitamin A, Folate, Fiber</td> 
+                    <td>Boosts immunity, improves digestion, and promotes healthy skin</td> 
+                </tr> 
+                <tr> 
+                    <td>Watermelon</td> 
+                    <td>30 kcal</td> 
+                    <td>Vitamin C, Vitamin A, Potassium, Antioxidants</td> 
+                    <td>Hydrates the body, promotes heart health, and reduces inflammation</td> 
+                </tr> 
+                <tr> 
+                    <td>Muskmelon</td> 
+                    <td>34 kcal</td> 
+                    <td>Vitamin C, Vitamin A, Potassium, Folate</td> 
+                    <td>Aids in hydration, supports vision health, and helps in weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Litchi</td> 
+                    <td>66 kcal</td> 
+                    <td>Vitamin C, Copper, Potassium, Antioxidants</td> 
+                    <td>Boosts immunity, improves skin health, and aids digestion</td> 
+                </tr> 
+                <tr> 
+                    <td>Guava</td> 
+                    <td>68 kcal</td> 
+                    <td>Vitamin C, Fiber, Folate, Vitamin A</td> 
+                    <td>Boosts immunity, improves digestive health, and supports skin health</td> 
+                </tr> 
+                <tr> 
+                    <td>Papaya</td> 
+                    <td>43 kcal</td> 
+                    <td>Vitamin C, Vitamin A, Folate, Antioxidants</td> 
+                    <td>Aids digestion, improves skin health, and boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Pineapple</td> 
+                    <td>50 kcal</td> 
+                    <td>Vitamin C, Manganese, Bromelain, Antioxidants</td> 
+                    <td>Aids digestion, reduces inflammation, and boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Jamun</td> 
+                    <td>60 kcal</td> 
+                    <td>Vitamin C, Iron, Antioxidants</td> 
+                    <td>Regulates blood sugar, improves digestion, and boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Amla</td> 
+                    <td>60 kcal</td> 
+                    <td>Vitamin C, Antioxidants, Fiber</td> 
+                    <td>Boosts immunity, improves skin health, and aids digestion</td> 
+                </tr> 
+                `;
+            }
+                        else if (region === 'w' && season === 'Sum' && foodType === 'Vegetable') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Ladyfinger</td> 
+                    <td>33 kcal</td> 
+                    <td>Fiber, Vitamin C</td> 
+                    <td>Supports digestion, aids weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Bittergourd</td> 
+                    <td>17 kcal</td> 
+                    <td>Vitamins A, C</td> 
+                    <td>May lower blood sugar, boosts immune system</td> 
+                </tr> 
+                <tr> 
+                    <td>Turai</td> 
+                    <td>20 kcal</td> 
+                    <td>Fiber, Vitamin C</td> 
+                    <td>Supports hydration, aids weight loss</td> 
+                </tr> 
+                <tr> 
+                    <td>Cucumber</td> 
+                    <td>16 kcal</td> 
+                    <td>Water, Vitamins K, C</td> 
+                    <td>Hydrating, supports skin health</td> 
+                </tr> 
+                <tr> 
+                    <td>Brinjal</td> 
+                    <td>25 kcal</td> 
+                    <td>Fiber, Antioxidants</td> 
+                    <td>Aids weight management, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Drumsticks</td> 
+                    <td>37 kcal</td> 
+                    <td>Vitamins A, C, Iron</td> 
+                    <td>Boosts immunity, aids digestion</td> 
+                </tr> 
+                <tr> 
+                    <td>Radish</td> 
+                    <td>16 kcal</td> 
+                    <td>Vitamins C, B6</td> 
+                    <td>Supports digestion, may help in detoxification</td> 
+                </tr> 
+                <tr> 
+                    <td>Capsicum</td> 
+                    <td>20 kcal</td> 
+                    <td>Vitamins A, C</td> 
+                    <td>Antioxidant properties, supports immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Green Beans</td> 
+                    <td>31 kcal</td> 
+                    <td>Fiber, Vitamins A, C</td> 
+                    <td>Supports digestion, good for heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Pumpkin</td> 
+                    <td>26 kcal</td> 
+                    <td>Vitamins A, C, E</td> 
+                    <td>Supports eye health, may aid weight loss</td> 
+                </tr> 
+                <tr> 
+                    <td>Tomato</td> 
+                    <td>18 kcal</td> 
+                    <td>Vitamins C, K</td> 
+                    <td>Antioxidant properties, supports heart health</td> 
+                </tr> 
+                `;
+            }
+                        else if (region === 'w' && season === 'Sum' && foodType === 'pulses') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Rice</td> 
+                    <td>130 kcal</td> 
+                    <td>Carbohydrates</td> 
+                    <td>Provides energy, supports digestive health</td> 
+                </tr> 
+                <tr> 
+                    <td>Wheat</td> 
+                    <td>340 kcal</td> 
+                    <td>Fiber, B vitamins</td> 
+                    <td>Supports digestion, may help manage weight</td> 
+                </tr> 
+                <tr> 
+                    <td>Jowar</td> 
+                    <td>329 kcal</td> 
+                    <td>Fiber, Protein</td> 
+                    <td>Gluten-free, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Bajra</td> 
+                    <td>378 kcal</td> 
+                    <td>Fiber, Magnesium</td> 
+                    <td>Good for digestion, may help control blood sugar</td> 
+                </tr> 
+                <tr> 
+                    <td>Moong Dal</td> 
+                    <td>105 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, aids weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Urad Dal</td> 
+                    <td>341 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help in weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Arhar Dal</td> 
+                    <td>353 kcal</td> 
+                    <td>Protein, Iron</td> 
+                    <td>Supports muscle health, may boost immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Chana Dal</td> 
+                    <td>387 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help control blood sugar</td> 
+                </tr> 
+                `;
+            }
+                        else if (region === 'e' && season === 'Win' && foodType === 'Fruit') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Litchi</td> 
+                    <td>66 kcal</td> 
+                    <td>Vitamin C, Copper, Potassium, Antioxidants</td> 
+                    <td>Boosts immunity, improves skin health, and aids digestion</td> 
+                </tr> 
+                <tr> 
+                    <td>Guava</td> 
+                    <td>68 kcal</td> 
+                    <td>Vitamin C, Fiber, Folate, Vitamin A</td> 
+                    <td>Boosts immunity, improves digestive health, and supports skin health</td> 
+                </tr> 
+                <tr> 
+                    <td>Papaya</td> 
+                    <td>43 kcal</td> 
+                    <td>Vitamin C, Vitamin A, Folate, Antioxidants</td> 
+                    <td>Aids digestion, improves skin health, and boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Oranges</td> 
+                    <td>47 kcal</td> 
+                    <td>Vitamin C, Fiber, Antioxidants</td> 
+                    <td>Boosts immunity, supports heart health, and improves skin health</td> 
+                </tr> 
+                <tr> 
+                    <td>Banana</td> 
+                    <td>89 kcal</td> 
+                    <td>Potassium, Vitamin C, Vitamin B6, Fiber</td> 
+                    <td>Provides energy, supports digestive health, and regulates blood pressure</td> 
+                </tr> 
+                <tr> 
+                    <td>Amla</td> 
+                    <td>60 kcal</td> 
+                    <td>Vitamin C, Antioxidants, Fiber</td> 
+                    <td>Boosts immunity, improves skin health, and aids digestion</td> 
+                </tr> 
+                `;
+            }
+                        else if (region === 'e' && season === 'Win' && foodType === 'Vegetable') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Green Mustard</td> 
+                    <td>28 kcal</td> 
+                    <td>Vitamins A, C, K</td> 
+                    <td>Supports bone health, boosts immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Spinach</td> 
+                    <td>23 kcal</td> 
+                    <td>Iron, Vitamins A, C</td> 
+                    <td>Promotes eye health, supports skin health</td> 
+                </tr> 
+                <tr> 
+                    <td>Carrots</td> 
+                    <td>41 kcal</td> 
+                    <td>Beta-carotene, Fiber</td> 
+                    <td>Good for eyesight, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Cabbage</td> 
+                    <td>25 kcal</td> 
+                    <td>Vitamins K, C</td> 
+                    <td>Aids digestion, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Cauliflower</td> 
+                    <td>25 kcal</td> 
+                    <td>Fiber, Vitamins C, K</td> 
+                    <td>Supports detoxification, may reduce cancer risk</td> 
+                </tr> 
+                <tr> 
+                    <td>Brinjal</td> 
+                    <td>25 kcal</td> 
+                    <td>Fiber, Antioxidants</td> 
+                    <td>Aids weight management, supports heart health</td> 
+                </tr> 
+                <tr> 
+                    <td>Radish</td> 
+                    <td>16 kcal</td> 
+                    <td>Vitamins C, B6</td> 
+                    <td>Supports digestion, may help in detoxification</td> 
+                </tr> 
+                `;
+            }
+
+            else if (region === 'e' && season === 'Win' && foodType === 'pulses') { 
+                tableContent = ` 
+                <tr> 
+                    <td>Rice</td> 
+                    <td>130 kcal</td> 
+                    <td>Carbohydrates</td> 
+                    <td>Provides energy, supports digestive health</td> 
+                </tr> 
+                <tr> 
+                    <td>Wheat</td> 
+                    <td>340 kcal</td> 
+                    <td>Fiber, B vitamins</td> 
+                    <td>Supports digestion, may help manage weight</td> 
+                </tr> 
+                <tr> 
+                    <td>Maize</td> 
+                    <td>365 kcal</td> 
+                    <td>Carbohydrates, Fiber</td> 
+                    <td>Provides energy, supports digestion</td> 
+                </tr> 
+                <tr> 
+                    <td>Moong Dal</td> 
+                    <td>105 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, aids weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Urad Dal</td> 
+                    <td>341 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help in weight management</td> 
+                </tr> 
+                <tr> 
+                    <td>Arhar Dal</td> 
+                    <td>353 kcal</td> 
+                    <td>Protein, Iron</td> 
+                    <td>Supports muscle health, may boost immunity</td> 
+                </tr> 
+                <tr> 
+                    <td>Chana Dal</td> 
+                    <td>387 kcal</td> 
+                    <td>Protein, Fiber</td> 
+                    <td>Supports digestion, may help control blood sugar</td> 
+                </tr> 
+                `;
+            }
+
+                // Insert table content into the table body
+                document.getElementById('table-body').innerHTML = tableContent;
+            }
+
+            // Run the function once the page loads
+            window.onload = function() {
+    displaySelectedInfo(); // Display selected values as heading
+    generateTable(); // Continue with table generation
+};
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <img src="ogo.jpeg" height="70" width="230" alt="Logo">
+             <h2 class="fd">Food Details</h2>
+            <button class="back-button" onclick="document.location='http://localhost:8080/signup/newregion.jsp'">Back</button>
+        </div>
+        <style>
+        .fd{
+        margin-left: -10%;
+        color: #006400;
+        font-size: 40px;
+        }
+        
+        .food-details{
+        font-size: 23px;
+        }
+        
+        .header{
+        height:10vh;
+        border-bottom: 2px solid green};
+      
+        
+        </style>
+       
+         <div id="selected-info" class="food-details"></div>
+         <br>
+        
+        <table border="1" cellspacing="0" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Food Item</th>
+                    <th>Calories</th>
+                    <th>Rich In</th>
+                    <th>Benefits</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- The table rows will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </body>
+    </html>

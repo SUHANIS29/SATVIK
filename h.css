@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.cover{
+     
+    height: 100vh;
+    width: 100%;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    
+    background-image: url("north.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    animation: change 30ms infinite ease-in-out;
+
+}
+
+.cover .text{
+    height: 50vh;
+    width: 40%;
+    background-color: rgba(248, 252, 248,0.5);
+    margin: 60px auto;
+    position: relative;
+    border-radius: 15px;
+     
+    align-items: center;
+    top: 40px;
+
+}
+.cover .text h4{
+    color: #045A16;
+    position: relative;
+    top:15px;
+    font-size: 30px;
+    font-weight: 900;
+
+}
+
+.cover .text p{
+    position: relative;
+    top:40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #06240d;
+    padding: 0 10px;
+}
+
+.cover .text img{
+    
+    border-radius: 50%;
+   position: relative;
+   top: 10px;
+
+}
+.head{
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top:0%;
+    opacity: 1;   
+}
+.head .button{
+    height: 80px;
+    width: 40%;
+    position:absolute;
+    top: 0%;
+    left: 55%;
+    
+    align-content: baseline;
+    align-items: end;
+    text-align: end;
+}
+
+.head .button .login,
+.signup{
+    height: 35px;
+    width: 100px;
+    position: relative;
+    top: 30px;
+    
+    font-size: 17px;
+    background: none;
+    text-decoration: none;
+    border:none
+   
+
+}
+
+
+.head .button .login{
+    border-bottom: 2px solid rgb(9, 51, 9);
+cursor:pointer;
+}
+.head .button .login:hover{
+    border-radius: 10px;
+    width: 110px;
+    border: 2px solid rgb(9, 51, 9);
+}
+.head .button .signup:hover{
+    border-radius: 10px;
+    width: 110px;
+    border: 2px solid rgb(9, 51, 9);
+}
+.head .button .signup{
+    margin-left: 40px;
+    border-bottom: 2px solid darkgreen;
+   cursor:pointer;
+}
+@keyframes change{
+    0%{
+        background-image: url("north.jpeg");
+        
+        
+        
+    }
+    10%{
+        background-image: url("fruit.jpg");
+
+    }
+
+    20%{
+        background-image: url("east.jpeg");
+    }
+    30%{
+        background-image: url("pg.jpg");
+
+    }
+    40%{
+        background-image: url("reg-1.jpg");
+
+    }
+    50%{
+        background-image: url("west.jpeg");
+    }
+    60%{
+        background-image: url("vv.jfif");
+    }
+    70%{
+        background-image: url("f2.jpg");
+    }
+    80%{
+        background-image: url("guj.avif");
+    }
+    90%{
+        background-image: url("reg-1.jpg");
+    }
+    100%{
+        background-image: url("veg-2.jfif");
+    }
+    
+}

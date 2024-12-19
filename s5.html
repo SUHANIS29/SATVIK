@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satvik: Food Details</title>
+    <link href="details.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        function redirectToResults() {
+            // Get values from the form
+            var region = document.food_details.region.value;
+            var season = document.food_details.season.value;
+            var foodType = document.food_details.food_type.value;
+
+            // Construct the URL based on form values
+            var url = 's6.html?region=' + region + '&season=' + season + '&food_type=' + foodType;
+
+            // Redirect to the dynamically generated page
+            window.location.href = url;
+            return false; // Prevent actual form submission
+        }
+    </script>
+</head>
+<body>
+    <img src="ogo.jpeg" height="70" width="230" alt="Logo">
+    <div class="box">
+        <div class="home">Food Details</div>
+    </div>
+
+    <button class="login" onClick="document.location='http://localhost:8080/signup/popup.jsp'">Profile <i class="fa-solid fa-user"></i></button>
+
+    <div class="des"> 
+        <h3>Enter Food Information</h3><br><br>
+        <form name="food_details" onsubmit="return redirectToResults()">
+            <label for="region">Region</label><br><br>
+            <select name="region">
+                <option value="n">North</option>
+                <option value="s">South</option>
+                <option value="e">East</option>
+                <option value="w">West</option>
+            </select><br><br>
+
+            <label for="state">State</label><br><br>
+            <select name="state" id="sname">
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands (AN)</option>
+                <!-- More state options... -->
+            </select><br><br>
+
+            <label for="season">Season</label><br><br>
+            <select name="season" id="seaname">
+                <option value="Sum">Summer</option>
+                <option value="Mon">Monsoon</option>
+                <option value="Win">Winter</option>
+            </select><br><br>
+
+            <label for="food_type">Food Type</label><br><br>
+            <select name="food_type" id="ftype">
+                <option value="Fruit">Fruits</option>
+                <option value="Vegetable">Vegetables</option>
+                <option value="pulses">Pulses and Grains</option>
+            </select><br><br><br>
+
+            <input type="submit" class="apply" value="Apply">
+        </form>
+    </div>
+</body>
+</html>

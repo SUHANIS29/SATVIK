@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.logo {
+    display: block;
+    margin: 10px auto; /* Center the logo */
+    height: 50px; /* Reduced height for the logo */
+    width: auto; /* Maintain aspect ratio */
+}
+
+.image-container {
+    text-align: right; /* Align image to the right */
+    margin: 20px auto; /* Center the container */
+    padding-right: 20px; /* Add some padding to the right */
+}
+
+.recipe-image {
+    height: auto;
+   position:relative;
+   left: 25%;/* Maintain aspect ratio */
+    width: 50%; /* Adjust width as necessary */
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.recipe-details {
+    max-width: 800px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 1);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.ingredients,
+.instructions {
+    margin-bottom: 20px;
+}
+
+.back-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}

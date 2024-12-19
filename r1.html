@@ -1,0 +1,351 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satvik: Sustainable Recipes</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          
+    <style>
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .recipe-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .recipe-card:hover {
+            transform: scale(1.05);
+        }
+
+        .recipe-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .recipe-card h3 {
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .recipe-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .des {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .head {
+            height: 70px;
+            width: 75%;
+            top: -2px;
+            position: absolute;
+            left: 20%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between; /* Keep space between items */
+        }
+
+        .head .login {
+            margin-left: auto; /* Push the logout button to the right */
+            margin-top: 20px;
+            height: 30px;
+            width: 120px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            background: none;
+            text-decoration: none;
+            border: none;
+            border-bottom: 2px solid rgb(9, 51, 9); /* Add same border as nav buttons */
+            transition: background-color 0.3s, border-color 0.3s; /* For smooth transitions */
+        }
+
+        .head .login:hover {
+            background-color: #B3E4B2; /* Hover effect */
+            border-radius: 10px; /* Rounded corners on hover */
+            border-color: transparent; /* Remove bottom border color on hover */
+        }
+
+        .head .nav-button {
+            margin-left: 10px; /* Reduced margin */
+            margin-top: 20px;
+            height: 30px;
+            text-align: center;
+            align-content: center;
+            width: 90px;
+            color: rgb(10, 36, 10);
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            border-bottom: 2px solid rgb(9, 51, 9);
+            transition: background-color 0.3s;
+        }
+
+        #recipes {
+            background-color: #B3E4B2;
+            border-radius: 10px;
+        }
+
+        .head .nav-button:hover {
+            background-color: #B3E4B2;
+            border-radius: 10px;
+        }
+
+        .head .login i {
+            margin-left: 10px;
+            color: rgb(10, 36, 10);
+        }
+
+        .des {
+            height: 40vh;
+            width: 100%;
+            background-color: #ACFFBE;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .des .big {
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        .des .small {
+            font-size: 20px;
+            font-weight: 400;
+        }
+        
+        #myhub{
+        
+        width: 15%;}
+    </style>
+</head>
+<body>
+    <header>
+        <img src="ogo.jpeg" class="logo" alt="Logo" height="70" width="230">
+        
+        <div class="head">
+            <div class="nav-button" onclick="document.location='http://localhost:8080/signup/secondhome.jsp'">Home</div>
+            <div class="nav-button" onclick="document.location='http://localhost:8080/signup/newregion.jsp'">Seasonal</div>
+            <div class="nav-button" id="recipes" onclick="document.location='http://localhost:8080/signup/recipes.jsp'">Recipes</div>
+             <div class="nav-button" id="myhub" onclick="document.location='http://localhost:8080/signup/data.jsp'">My Recipe Hub</div>
+            <button class="login" onclick="document.location='http://localhost:8080/signup/h.html'">
+                Log Out
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="des">
+            <p class="big">Sustainable Recipes for<br>a Healthier Planet</p>
+            <p class="small">Explore our collection of sustainable, eco-friendly recipes. Cook with local, seasonal ingredients to minimize waste and support a healthy lifestyle.</p>
+        </div>
+
+        <!-- Recipe Grid -->
+        <div class="recipe-grid">
+            <!-- Recipe 1 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/R1-QS.jsp">
+                    <img src="quinoa-salad.jpg" alt="Quinoa Salad">
+                    <h3>Quinoa Salad</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 2 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r2-vs.jsp">
+                    <img src="veg-skewers.jpg" alt="Vegetable Skewers">
+                    <h3>Vegetable Skewers</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 3 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r3-cc.jsp">
+                    <img src="chole.jpg" alt="Chickpea Curry">
+                    <h3>Chana Masala</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 4 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r4-bs.jsp">
+                    <img src="beetroot-salad.jpg" alt="Beetroot Salad">
+                    <h3>Beetroot Salad</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 5 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r5-sp.jsp">
+                    <img src="stuffed-paneer.jpeg" alt="Stuffed Peppers">
+                    <h3>Stuffed Paneer</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 6 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r6-ls.jsp">
+                    <img src="lentil-soup.jpg" alt="Lentil Soup">
+                    <h3>Lentil Soup</h3>
+                </a>
+            </div>
+
+             <!-- Recipe 7 
+            <div class="recipe-card">
+                <a href="file:///C:/recipes/R7-SF.HTML">
+                    <img src="Vegan-Stir-Fry.jpg" alt="Veg Stir Fry">
+                    <h3>Veg Stir Fry</h3>
+                </a>
+            </div> -->
+		<div class="recipe-card">
+		                <a href="http://localhost:8080/signup/vsf.jsp">
+		                    <img src="Vegan-Stir-Fry.jpg" alt="Spinach Tofu">
+		                    <h3>Veg Stir Fry</h3>
+		                </a>
+		            </div>
+
+            <!-- Recipe 8 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r8-st.jsp">
+                    <img src="r8-st.jpeg" alt="Spinach Tofu">
+                    <h3>Spinach Tofu</h3>
+                </a>
+            </div>
+            
+        
+            <!-- Recipe 9 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/pizza.jsp">
+                    <img src="veg-pizza.jpg" alt="Veggie Pizza">
+                    <h3>Veggie Pizza</h3>
+                </a>
+            </div> 
+
+            <!-- Recipe 12 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/palak-chaat.jsp">
+                    <img src="palak-chaat.jpg" alt="palak-chaat">
+                    <h3>Palak Chaat</h3>
+                </a>
+            </div> 
+
+            <!-- Recipe 13 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r13-ps.jsp">
+                    <img src="pumkin-soup.jpg" alt="Pumpkin Soup">
+                    <h3>Pumpkin Soup</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 15 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r15-csf.jsp">
+                    <img src="cabbage-stir-fry.jpeg" alt="Cabbage Stir Fry">
+                    <h3>Cabbage Stir Fry</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 16 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r16-rb.jsp">
+                    <img src="rice-with-black-beans.jpg" alt="Rice and Beans">
+                    <h3>Rice and Beans</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 17 
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r17-bc.jsp">
+                    <img src="butter-chicken.jpg" alt="Butter Chicken">
+                    <h3>Butter Chicken</h3>
+                </a>
+            </div>-->
+
+            <!-- Recipe 18 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r17-fc.jsp">
+                    <img src="fruit-chaat.jpg" alt="Fruit Chaat">
+                    <h3>Fruit Chaat</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 19 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r27-hc.jsp">
+                    <img src="homemade.jpeg" alt="Dal Pakhwan">
+                    <h3>Homemade Cheese</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 20 
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r20-rr.jsp">
+                    <img src="rajma-rice.jpg" alt="Rajma Rice">
+                    <h3>Rajma Rice</h3>
+                </a>
+            </div>-->
+
+            <!-- Recipe 21 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r21-re.jsp">
+                    <img src="roasted-eggplant.jpg" alt="Roasted Eggplant">
+                    <h3>Roasted Eggplant</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 22 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r22-pot.jsp">
+                    <img src="potato-tikki.jpg" alt="Potato Tikki">
+                    <h3>Potato Tikki</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 23 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r23-pt.jsp">
+                    <img src="panner-curry.jpg" alt="Paneer Tikka">
+                    <h3>Paneer Tikka</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 24 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r24-bc.jsp">
+                    <img src="besan-chilla.jpg" alt="Savory Pancakes">
+                    <h3>Besan Chilla</h3>
+                </a>
+            </div>
+
+            <!-- Recipe 26 -->
+            <div class="recipe-card">
+                <a href="http://localhost:8080/signup/r26-cr.jsp">
+                    <img src="cocnut-rice (1).jpg" alt="Coconut Rice">
+                    <h3>Coconut Rice</h3>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

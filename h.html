@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satvik:Home</title>
+    <link href="h.css" rel="stylesheet">
+</head>
+<body>
+    <div class="cover">
+        <div class="text">
+            <img src="images/satvikchitra.jpg" height="80" width="80">
+            <h4>Satvik</h4>
+            <p class="paragraph">Explore a curated collection of recipes that prioritize seasonal, locally 
+                sourced ingredients, helping you reduce your carbon footprint while enjoying delicious meals.</p>
+        </div>
+    </div>
+    <script>
+
+        let n = parseInt(Math.random() * 8);
+        console.log(n);
+
+        if (n == 0) {
+            let p = document.querySelector("p").innerText = "Explore a curated collection of recipes that prioritize seasonal, locally sourced ingredients, helping you reduce your carbon footprint while enjoying delicious meals";
+        }
+        else if (n == 1) {
+            let p = document.querySelector("p").innerText = "Focus on incorporating whole, unprocessed foods such as fruits, vegetables, whole grains, nuts, and seeds into your diet. These foods are nutrient-dense and beneficial for overall health.";
+        }
+        else if (n == 2) {
+            let p = document.querySelector("p").innerText = "Aim for a balanced plate that includes a variety of food groups: carbohydrates (whole grains), proteins (lentils, beans, dairy), healthy fats (nuts, seeds, oils), and plenty of vegetables";
+        }
+        else if (n == 3) {
+            let p = document.querySelector("p").innerText = "Practice mindful eating by paying attention to your hunger cues and savoring each bite. This helps prevent overeating and enhances your enjoyment of food.";
+        }
+        else if (n == 4) {
+            let p = document.querySelector("p").innerText = "Reduce your intake of processed foods high in sugars, unhealthy fats, and artificial additives. Opt for homemade meals whenever possible.";
+        }
+        else if (n == 5) {
+            let p = document.querySelector("p").innerText = "Tune into how different foods make you feel. This can help you make better food choices that suit your body's needs.";
+        }
+        else if (n == 6) {
+            let p = document.querySelector("p").innerText = "Stay informed about nutrition by reading credible sources and understanding the nutritional value of the foods you eat.";
+        }
+        else if (n == 7) {
+            let p = document.querySelector("p").innerText = "Rediscover and incorporate traditional Indian foods and recipes that are nutritious, such as millets, lentils, and regional vegetables.";
+        }
+        else if (n == 8) {
+            let p = document.querySelector("p").innerText = "Preparing meals at home allows you to control ingredients, portion sizes, and cooking methods, making it easier to eat healthily.";
+        }
+
+    </script>
+    <div class="head">
+        <img src="ogo.jpeg" height="80" width="200">
+        <div class="button">
+            <button class="login" onclick="document.location='http://localhost:8080/signup/login.jsp'">Log in</button>
+            
+            <button class="signup" onclick="document.location='http://localhost:8080/signup/registration.jsp'">Sign up</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: white;
+} 
+
+.con img{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.con .box{
+    height:85px;
+    width: 70%;
+    position: absolute;
+    top: -10px;
+    left: 20%;
+    border-bottom: 3px solid black;
+}
+
+#popclick{
+    margin-top: 35px;
+    height: 35px;
+    width: 100px;
+    font-size: 13px;
+    color: white;
+    background-color: #045a16;
+    text-align: center;
+    border-bottom: 3px solid #17412D;
+    border-radius: 25px ;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    position: absolute;
+    left: 80%;
+}
+
+#popclick i{
+    color:  #17412D;
+    height: 23px;
+    width: 23px;
+    position: relative;
+    right: -10%;
+    border-radius: 50%;
+    background-color: white;
+    align-content: center;
+    cursor: pointer;
+}
+
+.con .box .home{
+    margin-top: 45px;
+    margin-left: 5%;
+    height: 30px;
+    width: 120px;
+    color:  #045A16;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    align-content: center;
+    background-color: #B3E4B2 ;
+    border-radius: 10px;
+    cursor: pointer;
+   
+}
+.des form{
+    margin-left: 40px;
+}
+
+.des form label{
+    font-size: 20px;
+    color: #17412D;
+    font-weight: 600;
+}
+
+.des form input{
+    height: 30px;
+    width: 300px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #B3E4B2;
+  
+}
+
+.des form select{
+    height: 25px;
+    width: 300px;
+    border:none;
+    background-color: transparent;
+    border-bottom: 2px solid #17412D;
+}
+
+.des{
+    height: 500px;
+    width: 480px;
+    background-color: #fff9d4;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 30px;
+    top: 40px;
+    padding: 15px;
+    align-items: center;  
+}
+.des h3{
+    text-align: center;
+    font-size: 25px;
+    color: #17412D;
+}
+.des .big{
+    font-size: 50px;
+    margin-left: 10px;
+    color: #045A16;
+}
+
+.des .small{
+    font-size: 16px;
+    margin-left: 10px;
+    color: #045A16;
+}
+
+form div p{
+    
+    position: absolute;
+    top: 13%;
+    left: 48%;
+    
+    font-size: 23px;
+    font-weight: 700;
+    color: #045A16;
+   
+    margin-left: 30px;
+}
+
+form div p button{
+    height: 30px;
+    width: 30px;
+    align-content: center;
+    background-color: transparent;
+   border: none;
+   font-size: 23px;
+    text-decoration: none;
+    align-content: center; 
+    align-items: center; 
+    position: relative;    
+    top: 0px;   
+    left: 15px; 
+}
+    
+
+
+.zone{
+
+    height: 450px;
+    width: 680px;
+   
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    position: absolute;
+    top: 25%;
+    left: 43%;
+    border-radius: 15px;
+}
+
+
+
+.zone .n{
+    height: 200px;
+    width: 250px;
+    background-image: url("north.jpeg");
+    border: 2px solid black;
+    background-size: cover;
+    opacity: 0.8;
+    border-radius: 20px;
+    position: relative;
+    left: 60px;
+}
+ 
+.zone .n p{
+    position: relative;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    top: 170px;
+    left: 15px;
+}
+.zone .s{
+
+    height: 200px;
+    width: 250px;
+    background-color: rgb(238, 187, 58);
+    border-radius: 20px;
+    background-image: url("south.jpeg");
+    border: 2px solid black;
+    background-size: cover;
+    position: relative;
+    top: -45%;
+    left: 55%;
+}
+
+.zone .s p{
+    position: relative;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    top: 170px;
+    left: 15px;
+}
+
+.zone .e{
+    height: 200px;
+    width: 250px;
+    background-color: rgb(238, 187, 58);
+    border-radius: 20px;
+    background-image: url("east.jpeg");
+    border: 2px solid black;
+    background-size: cover;
+    position: relative;
+    left: 60px;
+    margin-top: -25%;
+}
+
+.zone .e p{
+    position: relative;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    top: 170px;
+    left: 15px;
+}
+
+
+
+.zone .w{
+
+    height: 200px;
+    width: 250px;
+    background-color: rgb(238, 187, 58);
+    border-radius: 20px;
+    background-image: url("west.jpeg");
+    border: 2px solid black;
+    background-size: cover;
+    margin-top: -0%;
+    position: relative;
+    top: -45%;
+    left: 55%;
+    
+}
+
+.zone .w p{
+    position: relative;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    top: 170px;
+    left: 15px;
+}
+
+
